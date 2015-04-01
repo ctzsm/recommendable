@@ -15,7 +15,7 @@ module Recommendable
           user = Recommendable.config.user_class.find_by_id(user_id)
           other_user = Recommendable.config.user_class.find_by_id(other_user)
           rating_diff = 0
-          rating_diff = (user.rating - other_user.rating).abs if user.respond_to?('rating')
+          rating_diff = (user.rating.to_f - other_user.rating.to_f).abs if user.respond_to?('rating')
           user_id = user_id.to_s
           other_user_id = other_user_id.to_s
           similarity = liked_count = disliked_count = 0
