@@ -13,7 +13,7 @@ module Recommendable
         # @note Similarity values are asymmetrical. `Calculations.similarity_between(user_id, other_user_id)` will not necessarily equal `Calculations.similarity_between(other_user_id, user_id)`
         def similarity_between(user_id, other_user_id)
           user = Recommendable.config.user_class.find_by_id(user_id)
-          other_user = Recommendable.config.user_class.find_by_id(other_user)
+          other_user = Recommendable.config.user_class.find_by_id(other_user_id)
           rating_diff = 0
           rating_diff = (user.rating.to_f - other_user.rating.to_f).abs if user.respond_to?('rating')
           user_id = user_id.to_s
