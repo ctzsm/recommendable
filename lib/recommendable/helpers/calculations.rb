@@ -52,7 +52,7 @@ module Recommendable
           end
 
           # similarity / (liked_count + disliked_count).to_f
-          similarity / liked_count.to_f * 0.5 + 1.0 / (1.0 + rating_diff) * 0.5
+          similarity / liked_count.to_f * 0.5 + 2.0 / (1.0 + rating_diff) * 0.5
         end
 
         # Used internally to update the similarity values between this user and all
