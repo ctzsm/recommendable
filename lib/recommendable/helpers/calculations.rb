@@ -34,7 +34,7 @@ module Recommendable
               # Recommendable.redis.sinter(liked_set, other_disliked_set)
               # Recommendable.redis.sinter(disliked_set, other_liked_set)
 
-              Recommendable.redis.scard(liked_set)
+              Recommendable.redis.scard(other_liked_set)
               # Recommendable.redis.scard(disliked_set)
             end
 
@@ -52,7 +52,7 @@ module Recommendable
           end
 
           # similarity / (liked_count + disliked_count).to_f
-          similarity / liked_count.to_f * 0.5 + 2.0 / (1.0 + rating_diff) * 0.5
+          similarity / liked_count.to_f * 0.5 + 0.5 / (1.0 + rating_diff)
         end
 
         # Used internally to update the similarity values between this user and all
